@@ -1,5 +1,7 @@
 <?php
+
 namespace Khuetd\NotificationBar\Block;
+
 class NotificationBarBottom extends \Magento\Framework\View\Element\Template
 {
     protected $dataHelper;
@@ -9,11 +11,12 @@ class NotificationBarBottom extends \Magento\Framework\View\Element\Template
      * @var \Magento\Cms\Model\Template\FilterProvider
      */
     protected $_filterProvider;
+
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Khuetd\NotificationBar\Helper\DataBottom $dataHelper ,
-        \Magento\Cms\Model\Template\FilterProvider $filterProvide ,
-        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager ,
+        \Khuetd\NotificationBar\Helper\DataBottom $dataHelper,
+        \Magento\Cms\Model\Template\FilterProvider $filterProvide,
+        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
         array $data = []
     ) {
         $this->_cookieManager = $cookieManager;
@@ -21,27 +24,37 @@ class NotificationBarBottom extends \Magento\Framework\View\Element\Template
         $this->dataHelper = $dataHelper;
         parent::__construct($context, $data);
     }
+
     public function getAllowGlobal()
     {
-        return $this->dataHelper->allowExtension() && 
-               $this->_hasNotEmpty() &&
-               (!$this->isClosedAndCleared() || !$this->dataHelper->getAllowClosed());
+        return $this->dataHelper->allowExtension() &&
+            $this->_hasNotEmpty() &&
+            (!$this->isClosedAndCleared() || !$this->dataHelper->getAllowClosed());
     }
-    protected function _hasNotEmpty() {
+
+    protected function _hasNotEmpty()
+    {
         $content = $this->getContent();
+
         return !empty($content);
     }
+
     public function getContent()
     {
         $content = $this->dataHelper->getDefaultContent();
-        $html = $this->_filterProvider->getBlockFilter()->filter($content);       
+        $html = $this->_filterProvider->getBlockFilter()->filter($content);
+
         return $html;
     }
-    public function isClosedAndCleared() {
+
+    public function isClosedAndCleared()
+    {
         //var_dump($_COOKIE);die();
         return $this->_cookieManager->getCookie(self::COOKIE_TNF);
     }
-    public function getHelper() {
-        return $this->dataHelper ;
+
+    public function getHelper()
+    {
+        return $this->dataHelper;
     }
 }

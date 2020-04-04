@@ -9,7 +9,7 @@
                 <span class="topfix-closebottom">
                     <a title="<?php echo __('dismiss this notification'); ?>">×</a>
                 </span>
-            <?php endif; ?>            
+            <?php endif; ?>
         </div>
     </div>
     <?php if ($dataHelper->getDefaultStyling() == 1): ?>
@@ -19,7 +19,7 @@
                 padding: 10px 16px;
                 background: #555;
                 color: #f1f1f1;
-                text-align:center;
+                text-align: center;
             }
 
             /* Page content */
@@ -27,6 +27,7 @@
                 padding: 16px;
 
             }
+
             <?php if($dataHelper->getFixedNotificationBar()): ?>
             /* The sticky class is added to the header with JS when it reaches its scroll position */
             .stickytopfixbottom {
@@ -36,13 +37,14 @@
                 width: 100%;
                 z-index: 1000;
             }
- 
+
             /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
             .stickytopfixbottom + .contenttopfixbottom {
                 padding-top: 102px;
             }
+
             <?php endif; ?>
-            .headertopfixbottom span.topfix-closebottom { 
+            .headertopfixbottom span.topfix-closebottom {
                 background-color: #FAD163;
                 border: 2px solid #735005;
                 cursor: pointer;
@@ -51,13 +53,16 @@
                 margin-right: 20px;
                 padding-left: 4px;
                 padding-right: 4px;
-                text-decoration: none; 
+                text-decoration: none;
             }
-            .headertopfix .topfix-closebottom a { 
-                text-decoration: none; 
-                color: #735005; }
-            .headertopfix .topfix-closebottom a:hover { 
-                text-decoration: none; 
+
+            .headertopfix .topfix-closebottom a {
+                text-decoration: none;
+                color: #735005;
+            }
+
+            .headertopfix .topfix-closebottom a:hover {
+                text-decoration: none;
             }
         </style>
     <?php endif; ?>
@@ -71,17 +76,17 @@
                 //topfixFunction()
             };*/
 
-    // Get the header
+            // Get the header
             //var header = document.getElementById("myHeadertopfixbottom");
-    // Get the offset position of the navbar
+            // Get the offset position of the navbar
             //var sticky = header.offsetTop;
-    <?php if ($dataHelper->getAllowClosed() == 1): ?>
-                $('.headertopfixbottom .topfix-closebottom').on("click", function () {
-                    //$.cookie("<?php echo $block::COOKIE_TNF; ?>", 1, {path: '/', expires: new Date((new Date()).getTime() + <?php echo $dataHelper->getAllowClosedSecond() ?> * 1000)});
-                    createCookie('<?php echo $block::COOKIE_TNF; ?>', 1,<?php echo $dataHelper->getAllowClosedSecond() ?>);
-                    $(".headertopfixbottom").fadeOut(100, "linear");
-                });
-    <?php endif; ?>
+            <?php if ($dataHelper->getAllowClosed() == 1): ?>
+            $('.headertopfixbottom .topfix-closebottom').on("click", function () {
+                //$.cookie("<?php echo $block::COOKIE_TNF; ?>", 1, {path: '/', expires: new Date((new Date()).getTime() + <?php echo $dataHelper->getAllowClosedSecond() ?> * 1000)});
+                createCookie('<?php echo $block::COOKIE_TNF; ?>', 1,<?php echo $dataHelper->getAllowClosedSecond() ?>);
+                $(".headertopfixbottom").fadeOut(100, "linear");
+            });
+            <?php endif; ?>
             /*
             function readCookie(name) {
                 var nameEQ = name + '=';
@@ -100,13 +105,12 @@
                     var date = new Date();
                     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
                     var expires = ';expires=' + date.toGMTString();
-                }
-                else
+                } else
                     var expires = '';
                 document.cookie = name + '=' + value + expires + '; path=/';
             }
 
-    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function topfixFunction() {
                 if (window.pageYOffset > sticky) {
                     header.classList.add("stickytopfixbottom");

@@ -11,7 +11,7 @@
                 </general>
                 <generalbottom>
                     <enabledisable>1</enabledisable>
-                    <defaultstyling>1</defaultstyling>
+                    <defaultstyling>0</defaultstyling>
                     <defaultcontent>Notification Content</defaultcontent>
                     <allowclosed>1</allowclosed>
                     <allowclosedsecond>30</allowclosedsecond>

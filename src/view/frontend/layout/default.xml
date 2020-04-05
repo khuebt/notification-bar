@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
-<page  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="after.body.start">
-            <block class="Khuetd\NotificationBar\Block\NotificationBar" name="notificationbar" as="notificationbar" template="Khuetd_NotificationBar::notificationbar.phtml"/>
+            <block class="Ktd\NotificationBar\Block\NotificationBar" name="notificationbar" as="notificationbar"
+                   template="Ktd_NotificationBar::notificationbar.phtml"/>
         </referenceContainer>
         <referenceContainer name="before.body.end">
-            <block class="Khuetd\NotificationBar\Block\NotificationBarBottom" name="notificationbarbottom" as="notificationbarbottom" template="Khuetd_NotificationBar::notificationbarbottom.phtml"/>
+            <block class="Ktd\NotificationBar\Block\NotificationBarBottom" name="notificationbarbottom"
+                   as="notificationbarbottom" template="Ktd_NotificationBar::notificationbarbottom.phtml"/>
         </referenceContainer>
     </body>
 </page>

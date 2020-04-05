@@ -1,6 +1,6 @@
 <?php
 
-namespace Khuetd\NotificationBar\Helper;
+namespace Ktd\NotificationBar\Helper;
 
 
 /**
@@ -8,13 +8,13 @@ namespace Khuetd\NotificationBar\Helper;
  */
 class DataBottom extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    const SCOPE_TYPE_BAR = 'store';
     /**
      * ScopeConfigInterface scopeConfig
      *
      * @var scopeConfig
      */
     protected $scopeConfig;
-    const SCOPE_TYPE_BAR = 'store';
 
     /**
      * @param CustomerSession $customerSession

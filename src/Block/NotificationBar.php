@@ -1,20 +1,29 @@
 <?php
 
-namespace Khuetd\NotificationBar\Block;
+namespace Ktd\NotificationBar\Block;
 
 class NotificationBar extends \Magento\Framework\View\Element\Template
 {
-    protected $dataHelper;
     const COOKIE_TNF = 'notification-bar-cookie';
+    protected $dataHelper;
     protected $_cookieManager;
     /**
      * @var \Magento\Cms\Model\Template\FilterProvider
      */
     protected $_filterProvider;
 
+    /**
+     * NotificationBar constructor.
+     *
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Ktd\NotificationBar\Helper\Data                 $dataHelper
+     * @param \Magento\Cms\Model\Template\FilterProvider       $filterProvide
+     * @param \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager
+     * @param array                                            $data
+     */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Khuetd\NotificationBar\Helper\Data $dataHelper,
+        \Ktd\NotificationBar\Helper\Data $dataHelper,
         \Magento\Cms\Model\Template\FilterProvider $filterProvide,
         \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
         array $data = []
@@ -25,6 +34,9 @@ class NotificationBar extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
     }
 
+    /**
+     * @return bool
+     */
     public function getAllowGlobal()
     {
         $dataHelper = $this->getHelper();
@@ -34,13 +46,9 @@ class NotificationBar extends \Magento\Framework\View\Element\Template
             (!$this->isClosedAndCleared() || !$this->dataHelper->getAllowClosed());
     }
 
-    protected function _hasNotEmpty()
-    {
-        $content = $this->getContent();
-
-        return !empty($content);
-    }
-
+    /**
+     * @return mixed
+     */
     public function getContent()
     {
         $content = $this->dataHelper->getDefaultContent();
@@ -49,14 +57,30 @@ class NotificationBar extends \Magento\Framework\View\Element\Template
         return $html;
     }
 
+    /**
+     * @return mixed
+     */
     public function isClosedAndCleared()
     {
         //var_dump($_COOKIE);die();
         return $this->_cookieManager->getCookie(self::COOKIE_TNF);
     }
 
+    /**
+     * @return \Ktd\NotificationBar\Helper\Data
+     */
     public function getHelper()
     {
         return $this->dataHelper;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _hasNotEmpty()
+    {
+        $content = $this->getContent();
+
+        return !empty($content);
     }
 }

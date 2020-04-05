@@ -1,6 +1,6 @@
 <?php
 
-namespace Khuetd\NotificationBar\Helper;
+namespace Ktd\NotificationBar\Helper;
 
 
 /**
@@ -8,16 +8,16 @@ namespace Khuetd\NotificationBar\Helper;
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    const SCOPE_TYPE_BAR = 'store';
     /**
      * ScopeConfigInterface scopeConfig
      *
      * @var scopeConfig
      */
     protected $scopeConfig;
-    const SCOPE_TYPE_BAR = 'store';
 
     /**
-     * @param CustomerSession $customerSession
+     * @param \Magento\Framework\App\Helper\Context $context
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context
